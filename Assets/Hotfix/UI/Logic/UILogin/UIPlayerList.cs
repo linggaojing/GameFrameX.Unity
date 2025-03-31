@@ -30,7 +30,7 @@ namespace Hotfix.UI
         List<PlayerInfo> playerList = new List<PlayerInfo>();
 
         private static INetworkChannel networkChannel;
-        public static string serverIp = "127.0.0.1";
+        public static string serverIp = "8.148.225.3";
         public static int serverPort = 29100;
 
         public override async void OnOpen(object userData)
