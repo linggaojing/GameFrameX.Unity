@@ -19,7 +19,7 @@ MonoBehaviour:
     assetLoadType: 1
     compressDataPackage: 0
     VideoUrl: 
-    DST: F:/GameFrameX/GameFrameX/WxGame
+    DST: /Users/linggaojing/Documents/GameFrameX/GameFrameX/MiniGame
     StreamCDN: 
     bundleHashLength: 32
     bundlePathIdentifier: StreamingAssets;
