@@ -66,7 +66,7 @@ namespace Hotfix.UI
             ReqPlayerList reqPlayerList = new ReqPlayerList();
 
             reqPlayerList.Id = req.Id;
-            var respPlayerList = await GameApp.Web.Post<RespPlayerList>($"http://8.148.225.3:28080/game/api/{nameof(ReqPlayerList).ConvertToSnakeCase()}", reqPlayerList);
+            var respPlayerList = await GameApp.Web.Post<RespPlayerList>($"http://{AppConst.IP}:{AppConst.HttpPort}/game/api/{nameof(ReqPlayerList).ConvertToSnakeCase()}", reqPlayerList);
 
             if (respPlayerList.ErrorCode > 0)
             {

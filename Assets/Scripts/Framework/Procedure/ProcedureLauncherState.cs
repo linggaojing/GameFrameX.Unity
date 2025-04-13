@@ -21,6 +21,7 @@ namespace Unity.Startup.Procedure
 
         private async void Start(IFsm<IProcedureManager> procedureOwner)
         {
+            AppConst.UseLocalHost = false;
             await UniTask.NextFrame();
             ChangeState<ProcedureGetGlobalInfoState>(procedureOwner);
         }

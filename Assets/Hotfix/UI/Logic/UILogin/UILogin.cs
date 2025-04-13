@@ -59,7 +59,7 @@ namespace Hotfix.UI
             };
             req.Platform = PathHelper.GetPlatformName;
 
-            string url = $"http://8.148.225.3:28080/game/api/{nameof(ReqLogin).ConvertToSnakeCase()}";
+            string url = $"http://{AppConst.IP}:{AppConst.HttpPort}/game/api/{nameof(ReqLogin).ConvertToSnakeCase()}";
             var respLogin = await GameApp.Web.Post<RespLogin>(url, req);
             if (respLogin.ErrorCode > 0)
             {
@@ -74,7 +74,7 @@ namespace Hotfix.UI
             ReqPlayerList reqPlayerList = new ReqPlayerList();
 
             reqPlayerList.Id = respLogin.Id;
-            var respPlayerList = await GameApp.Web.Post<RespPlayerList>($"http://8.148.225.3:28080/game/api/{nameof(ReqPlayerList).ConvertToSnakeCase()}", reqPlayerList);
+            var respPlayerList = await GameApp.Web.Post<RespPlayerList>($"http://{AppConst.IP}:{AppConst.HttpPort}/game/api/{nameof(ReqPlayerList).ConvertToSnakeCase()}", reqPlayerList);
             if (respPlayerList.ErrorCode > 0)
             {
                 Log.Error("登录失败，错误信息:" + respPlayerList.ErrorCode);

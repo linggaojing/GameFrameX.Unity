@@ -49,7 +49,7 @@ namespace Unity.Startup.Procedure
                 else
                 {
                     var gameAppVersion = Utility.Json.ToObject<ResponseGameAppVersion>(httpJsonResult.Data);
-
+                    Debug.Log("lgj "+gameAppVersion);
                     /*if (gameAppVersion.IsUpgrade)
                     {
                         var uiLoadingMainScene = GameApp.FUI.Get<UILauncher>(UILauncher.UIResName);

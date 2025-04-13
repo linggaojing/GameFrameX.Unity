@@ -44,7 +44,8 @@ namespace Unity.Startup.Procedure
                 {
                     var gameAssetPackageVersion = Utility.Json.ToObject<ResponseGameAssetPackageVersion>(httpJsonResult.Data);
 
-                    var gameAppVersionPath = Path.Combine(gameAssetPackageVersion.RootPath, gameAssetPackageVersion.PackageName, gameAssetPackageVersion.Platform, gameAssetPackageVersion.AppVersion, gameAssetPackageVersion.Channel, gameAssetPackageVersion.AssetPackageName, gameAssetPackageVersion.Version) + Path.DirectorySeparatorChar;
+                    // var gameAppVersionPath = Path.Combine(gameAssetPackageVersion.RootPath, gameAssetPackageVersion.PackageName, gameAssetPackageVersion.Platform, gameAssetPackageVersion.AppVersion, gameAssetPackageVersion.Channel, gameAssetPackageVersion.AssetPackageName, gameAssetPackageVersion.Version) + Path.DirectorySeparatorChar;
+                    var gameAppVersionPath = Path.Combine(gameAssetPackageVersion.RootPath, gameAssetPackageVersion.Version) + Path.DirectorySeparatorChar;
                     var varStringDownloadURL = ReferencePool.Acquire<VarString>();
                     varStringDownloadURL.SetValue(gameAppVersionPath);
                     procedureOwner.SetData(AssetComponent.BuildInPackageName, varStringDownloadURL);
