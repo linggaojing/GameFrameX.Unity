@@ -37,7 +37,7 @@ namespace Unity.Startup.Procedure
 
         private async void GetGlobalInfo(IFsm<IProcedureManager> procedureOwner)
         {
-            string rootUrl = $"http://{AppConst.IP}:{AppConst.WebSocketPort}/api/GameGlobalInfo/GetInfo";
+            string rootUrl = $"http://{AppConst.IP}:{AppConst.APIWebSocketPort}/api/GameGlobalInfo/GetInfo";
             var jsonParams = HttpHelper.GetBaseParams();
             try
             {
@@ -60,8 +60,8 @@ namespace Unity.Startup.Procedure
                     ResponseGlobalInfo responseGlobalInfo = Utility.Json.ToObject<ResponseGlobalInfo>(httpJsonResult.Data);
                     GlobalConfigComponent globalConfigComponent = GameApp.GlobalConfig;
                     GameFrameworkLog.Debug("responseGlobalInfo "+responseGlobalInfo.CheckAppVersionUrl + " " + responseGlobalInfo.CheckResourceVersionUrl);
-                    globalConfigComponent.CheckAppVersionUrl = $"http://{AppConst.IP}:{AppConst.WebSocketPort}/{responseGlobalInfo.CheckAppVersionUrl}";
-                    globalConfigComponent.CheckResourceVersionUrl = $"http://{AppConst.IP}:{AppConst.WebSocketPort}/{responseGlobalInfo.CheckResourceVersionUrl}";
+                    globalConfigComponent.CheckAppVersionUrl = $"http://{AppConst.IP}:{AppConst.APIWebSocketPort}/{responseGlobalInfo.CheckAppVersionUrl}";
+                    globalConfigComponent.CheckResourceVersionUrl = $"http://{AppConst.IP}:{AppConst.APIWebSocketPort}/{responseGlobalInfo.CheckResourceVersionUrl}";
                     globalConfigComponent.Content = responseGlobalInfo.Content;
                     // TODO  这里要自己从Content中解析。因为可能有多个
                     // globalConfigComponent.HostServerUrl = responseGlobalInfo.CheckResourceVersionUrl;

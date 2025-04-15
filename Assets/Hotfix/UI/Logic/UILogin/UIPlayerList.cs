@@ -30,8 +30,12 @@ namespace Hotfix.UI
         List<PlayerInfo> playerList = new List<PlayerInfo>();
 
         private static INetworkChannel networkChannel;
-        public static string serverIp = "8.148.225.3";
-        public static int serverPort = 29100;
+        public static string serverIp = AppConst.IP;
+#if UNITY_WEBGL && ENABLE_GAME_FRAME_X_WEB_SOCKET
+        public static string serverPort = AppConst.ServerWebSocketPort;
+#else
+        public static string serverPort = AppConst.TcpPort;
+#endif
 
         public override async void OnOpen(object userData)
         {
@@ -81,7 +85,11 @@ namespace Hotfix.UI
             // 注册心跳消息
             DefaultPacketHeartBeatHandler packetSendHeaderHandler = new DefaultPacketHeartBeatHandler();
             networkChannel.RegisterHeartBeatHandler(packetSendHeaderHandler);
+#if  UNITY_WEBGL && ENABLE_GAME_FRAME_X_WEB_SOCKET
+            networkChannel.Connect(new Uri($"ws://{serverIp}:{serverPort}"));
+#else
             networkChannel.Connect(new Uri($"tcp://{serverIp}:{serverPort}"));
+#endif
             GameApp.Event.CheckSubscribe(NetworkConnectedEventArgs.EventId, OnNetworkConnected);
             GameApp.Event.CheckSubscribe(NetworkClosedEventArgs.EventId, OnNetworkClosed);
         }

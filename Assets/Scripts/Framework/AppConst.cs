@@ -17,7 +17,9 @@ public class AppConst
         }
     }
 
-    public static string HttpPort = "28080";
-    public static string WebSocketPort = "20808";
+    public static string HttpPort = "28080";//http端口
+    public static string APIWebSocketPort = "20808";//api中的websocket端口
+    public static string TcpPort = "29100";
+    public static string ServerWebSocketPort = "29110";//server中websocket端口
 
 }
